@@ -1,0 +1,17 @@
+Border gateway protocol - Internet protocol
+TCP 179 with three way handshake
+Determines how the traffic flow between Autonomous systems
+Its a path Vector protocol - shortest AS takes the precedence.
+Collection of IP's of an organization - Autonomus number
+Peers on same AS IBGP, if peers are on different AS's its EBGP.
+NLRI - Network Layer routing information is the form where exchanged between routers.
+
+BGP Message Types
+BGP exchanges information via four message types:
+
+OPEN: initiates a session, exchanging ASN and capabilities.
+UPDATE: advertises or withdraws routes; carries prefix and path attributes.
+KEEPALIVE: maintains session health.
+NOTIFICATION: indicates errors and initiates session teardown.
+
+OU - KN - Open, Update, Keepalive, and notification.
