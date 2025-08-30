@@ -1,0 +1,53 @@
+OSPF is a dynamic Routing Protocol. Its a Open shortest path first
+Metric is cost of the interface, Lower cost is the better path.
+Each router build the OSPF database and share the routes with each other
+OSPF forms the neighbor relationships using the Hello packets sent to 224.0.0.5. Once established it forms the LSA.
+
+224.0.0.5 and 224.0.0.6 are special multicast addresses used by OSPF for router communication on multiaccess networks. 224.0.0.5 is used by all OSPF routers to exchange hello packets and routing information, while 224.0.0.6 is specifically used for communication from non-DR/BDR routers to the Designated Router (DR) and Backup Designated Router (BDR).
+
+OSPF states:
+=============
+Routers in OSPF go through multiple states before full connectivity:
+
+Down: No Hello packets received yet.
+
+Init: Hello packets received but neighbor not acknowledged.
+
+2Way: Bidirectional Hello exchange; neighbors see each other.
+
+Exstart/Exchange: Routers elect master/slave roles and exchange Database Descriptor (DBD) packets.
+
+Loading: Missing LSAs are requested (LSRs) and advertised (LSUs).
+
+Full: Databases are synchronized, and routers are fully adjacent and ready for routing.
+
+**DI2ELF** Down,Init,2way, Exchange/exstart, Loading and Full.
+
+OSPF Networks are reduced into small Area's to reduce LSA's
+Everythings should be connected to backbone.
+ABr's connecte to multiple Area's - Area Border Routers
+ASBR's - Autonomus System border routers
+
+
+OSPF elects DR and BDR - Designated Router and Backup Designated ROuter
+LSA (Link-State Advertisement) Types
+Type 1 (Router LSA): Describes routers' links and state within an area.
+
+Type 2 (Network LSA): Created by DRs on broadcast networks for the subnet.
+
+Type 3 (Summary LSA): Propagated by ABRs between areas.
+
+Type 4 (ASBR Summary LSA): Routes to ASBRs.
+
+Type 5 (External LSA): Imported from outside the OSPF domain (e.g., from redistribution).
+
+Type 7: Used in NSSA (Not-So-Stubby Areas).
+
+
+Type	Name	Who Creates It?	Simple Example
+1	Router LSA	Every router	“I have 3 doors!”
+2	Network LSA	Playground leader	“These kids are on my playground!”
+3	Summary LSA	Area borders	“There’s a cool fort in another neighborhood.”
+4	ASBR Summary LSA	Area borders	“To reach the outside world, find Lucy!”
+5	External LSA	Outsider router	“Secret candy shop in Neverland—here’s the way!”
+7	NSSA External LSA	NSSA routers	“Outsiders have fun news, but I’ll check it before sharing”
